@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>483</width>
-    <height>284</height>
+    <width>583</width>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,6 +58,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="text">
+           <string>cacert.pem</string>
+          </property>
           <property name="placeholderText">
            <string>Certificat Root</string>
           </property>
@@ -65,8 +68,14 @@
         </item>
         <item>
          <widget class="QPushButton" name="cacertBrowseButton">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Parcourir</string>
+           <string>Certificat root</string>
           </property>
          </widget>
         </item>
@@ -76,6 +85,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QLineEdit" name="clientcertEdit">
+          <property name="text">
+           <string>clientcert.pem</string>
+          </property>
           <property name="placeholderText">
            <string>Certificat du client</string>
           </property>
@@ -83,8 +95,14 @@
         </item>
         <item>
          <widget class="QPushButton" name="clientcertBrowseButton">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Parcourir</string>
+           <string>Certificat client</string>
           </property>
          </widget>
         </item>
@@ -94,6 +112,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
          <widget class="QLineEdit" name="clientPrivateKeyEdit">
+          <property name="text">
+           <string>clientprivate.key</string>
+          </property>
           <property name="placeholderText">
            <string>Clé privée du client</string>
           </property>
@@ -101,8 +122,14 @@
         </item>
         <item>
          <widget class="QPushButton" name="clientPrivateKeyBrowseButton">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Parcourir</string>
+           <string>Clé privée client</string>
           </property>
          </widget>
         </item>
@@ -117,8 +144,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>483</width>
-     <height>20</height>
+     <width>583</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

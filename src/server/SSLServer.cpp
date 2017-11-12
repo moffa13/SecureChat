@@ -11,6 +11,7 @@ void SSLServer::incomingConnection(qintptr socketDescriptor){
 	QSslSocket* socket = new QSslSocket{this};
 	if(socket->setSocketDescriptor(socketDescriptor)){
 		addPendingConnection(socket);
+		socket->startServerEncryption();
 	}else{
 		delete socket;
 	}

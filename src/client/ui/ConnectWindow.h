@@ -22,6 +22,7 @@ class ConnectWindow : public QMainWindow
 	private:
 		Ui::ConnectWindow *ui;
 		Chat *_chat = nullptr;
+		void closeEvent(QCloseEvent *event);
 };
 
 #endif // CONNECTWINDOW_H

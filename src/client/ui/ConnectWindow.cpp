@@ -1,5 +1,6 @@
 #include "ConnectWindow.h"
 #include "ui_ConnectWindow.h"
+#include <QCloseEvent>
 
 ConnectWindow::ConnectWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -12,6 +13,12 @@ ConnectWindow::ConnectWindow(QWidget *parent) :
 
 ConnectWindow::~ConnectWindow(){
 	delete ui;
+}
+
+void ConnectWindow::closeEvent(QCloseEvent *event){
+	QMainWindow::closeEvent(event);
+	event->accept();
+	qApp->quit();
 }
 
 void ConnectWindow::on_connectButton_clicked(){
