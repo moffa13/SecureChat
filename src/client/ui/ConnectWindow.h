@@ -2,6 +2,7 @@
 #define CONNECTWINDOW_H
 
 #include <QMainWindow>
+#include <QScopedPointer>
 #include "Chat.h"
 
 namespace Ui {
@@ -21,7 +22,7 @@ class ConnectWindow : public QMainWindow
 
 	private:
 		Ui::ConnectWindow *ui;
-		Chat *_chat = nullptr;
+		QScopedPointer<Chat> _chat;
 		void closeEvent(QCloseEvent *event);
 };
 

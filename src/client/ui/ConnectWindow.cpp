@@ -9,6 +9,11 @@ ConnectWindow::ConnectWindow(QWidget *parent) :
 	ui->setupUi(this);
 	setFixedSize(sizeHint());
 	setWindowTitle("SecureChat");
+
+	ui->cacertEdit->setText(QApplication::applicationDirPath() + "/ca.crt");
+	ui->clientcertEdit->setText(QApplication::applicationDirPath() + "/client.crt");
+	ui->clientPrivateKeyEdit->setText(QApplication::applicationDirPath() + "/client.key");
+
 }
 
 ConnectWindow::~ConnectWindow(){
@@ -22,10 +27,10 @@ void ConnectWindow::closeEvent(QCloseEvent *event){
 }
 
 void ConnectWindow::on_connectButton_clicked(){
-	_chat = new Chat{"127.0.0.1", 8888, "cacert.pem", "clientcert.pem"};
-	connect(_chat, &Chat::destroyed, [this](){
+	_chat.reset(new Chat{"127.0.0.1", 8888, ui->cacertEdit->text(), ui->clientcertEdit->text(), ""});
+	connect(_chat.data(), &Chat::destroyed, [this](){
 		show();
-		_chat = nullptr;
+		_chat.take();
 	});
 	_chat->show();
 	hide();
