@@ -12,4 +12,5 @@ FORMS += \
 
 HEADERS += \
 	ui/ConnectWindow.h \
-	ui/Chat.h
+	ui/Chat.h \
+    ui/utils.h

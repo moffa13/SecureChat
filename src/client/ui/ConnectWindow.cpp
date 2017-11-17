@@ -1,6 +1,10 @@
 #include "ConnectWindow.h"
 #include "ui_ConnectWindow.h"
 #include <QCloseEvent>
+#include <QMessageBox>
+#include "utils.h"
+
+#define DEFAULT_CHAT_PORT 8888
 
 ConnectWindow::ConnectWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -27,11 +31,17 @@ void ConnectWindow::closeEvent(QCloseEvent *event){
 }
 
 void ConnectWindow::on_connectButton_clicked(){
-	_chat.reset(new Chat{"127.0.0.1", 8888, ui->cacertEdit->text(), ui->clientcertEdit->text(), ""});
-	connect(_chat.data(), &Chat::destroyed, [this](){
-		show();
-		_chat.take();
-	});
-	_chat->show();
-	hide();
+	try{
+		auto addressPort = utils::parseAddress(ui->urlEdit->text(), DEFAULT_CHAT_PORT);
+
+		_chat.reset(new Chat{addressPort.first, addressPort.second, ui->cacertEdit->text(), ui->clientcertEdit->text(), ""});
+		connect(_chat.data(), &Chat::destroyed, [this](){
+			show();
+			_chat.take();
+		});
+		_chat->show();
+		hide();
+	}catch(ParseAddressException const& e){
+		QMessageBox::critical(this, "Host error", e.code() == 2 ? "Host lookup has failed" : "There is an error with the address you provided", QMessageBox::Ok);
+	}
 }
